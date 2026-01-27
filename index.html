@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>PokeDex</title>
+</head>
+<body>
+    <div class="max-w-3xl mx-auto p-5">
+        <description-container>
+            <div>
+                <h1 class="font-bold text-3xl text-rose-600">Pokédex</h1>
+                <p id="pokemonFact" class="text-sm py-2 text-gray-600">The Pokedex is your ultimate Pokémon companion, offering detailed information on every Pokémon, including stats, abilities, and evolution paths, making it easy to explore and enhance your Pokémon journey.</p>
+            </div>
+        </description-container>
+        <search>
+            <div class="flex justify-center items-center p-4">
+                <form id="pokemonSearchForm" class="flex space-x-2 bg-white border border-gray-300 rounded-md shadow-lg p-2 w-full max-w-md">
+                    <input type="search" name="search" id="pokemonInput" placeholder="Search Pokémon..."
+                        class="px-4 py-2 flex-1 border-none outline-none rounded-sm shadow-inner focus:ring-2 focus:ring-rose-400 transition w-full max-w-xs sm:max-w-md">
+                    <button type="submit" class="px-5 py-2 bg-rose-500 text-white font-semibold rounded-sm shadow-md hover:bg-rose-600 transition cursor-pointer">Search</button>
+                </form>
+            </div>                        
+        </search>
+    </div>
+
+    <pokemon-details id="pokemonDetails" style="display: none;">
+        <main class="flex flex-col md:flex-row justify-between gap-6 p-5">
+            <section class="flex-1">
+                <div>
+                    <div class="mt-6 flex justify-center items-center">
+                        <img id="pokemonImage" src="" alt="Pokemon Image" class="h-60 w-60 p-2 rounded-lg shadow-lg">
+                    </div>
+                    
+                    <div class="flex gap-3 py-4 px-2 justify-center">
+                        <h1 id="pokemonName" class="font-bold text-xl"></h1>
+                        <p id="pokemonID" class="text-2xl text-gray-400"></p>
+                    </div>
+        
+                    <div id="evolutions" class="flex gap-5 flex-wrap justify-center"></div>
+        
+                    <div class="flex flex-wrap gap-6 justify-center py-4">
+                        <!-- Pokemon Description Card -->
+                        <div class="w-full max-w-lg bg-gradient-to-br from-blue-400 to-purple-500 p-6 rounded-lg shadow-lg text-white">
+                            <h2 class="text-lg font-semibold mb-2">Description</h2>
+                            <p id="pokemonDescription" class="text-sm"></p>
+                        </div>
+                    
+                        <!-- Pokemon Stats Card -->
+                        <div class="w-full max-w-lg bg-white p-6 rounded-xl shadow-md flex justify-between items-center border border-gray-200">
+                            <div class="flex flex-col items-center">
+                                <h3 class="text-gray-400 text-sm font-medium">Height</h3>
+                                <p id="pokemonHeight" class="text-md font-semibold text-gray-800"></p>
+                            </div>
+                            <div class="w-px bg-gray-300 h-12"></div>
+                            <div class="flex flex-col items-center">
+                                <h3 class="text-gray-400 text-sm font-medium">Weight</h3>
+                                <p id="pokemonWeight" class="text-md font-semibold text-gray-800"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="flex-1">
+                <div>
+                    
+                    <div class="flex flex-wrap gap-5 justify-center py-4">
+                        <div id="types" class="flex gap-2"></div>
+                        <div id="stats" class="grid grid-cols-2 gap-4 bg-white p-4 rounded-lg shadow-md"></div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-6 justify-center py-6">
+                        <!-- Abilities Section -->
+                        <div id="abilities" class="w-full max-w-lg bg-white py-5 px-2 rounded-xl shadow-md border border-gray-200">
+                            <h2 class="font-bold text-lg text-gray-800 mb-3 text-center">ABILITIES</h2>
+                            <ul class="list-none flex flex-wrap gap-1 justify-center">
+                                <!-- Abilities will be dynamically added here -->
+                            </ul>
+                        </div>
+                    
+                        <!-- Attacks Section -->
+                        <div id="attacks" class="w-full max-w-lg bg-white py-5 px-2 rounded-xl shadow-md border border-gray-200">
+                            <h2 class="font-bold text-lg text-gray-800 mb-3 text-center">ATTACKS</h2>
+                            <ul class="list-none flex flex-wrap gap-1 justify-center">
+                                <!-- Attacks will be dynamically added here -->
+                            </ul>
+                        </div>
+                    </div>  
+                </div>
+            </section>
+        </main>
+    </pokemon-details>
+
+    <pokemon-cards>
+        <div class="p-5">
+            <div id="pokemon-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            </div>
+        </div>    
+    </pokemon-cards>
+        
+        <!-- Custom Alert -->
+        <div id="customAlert" class="hidden fixed top-0 left-0 w-full h-full bg-transparent bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm text-center">
+            <p id="customAlertMessage" class="text-gray-800 text-lg font-medium mb-4">Error message here</p>
+            <button onclick="hideCustomAlert()" class="px-4 py-2 bg-rose-400 text-white rounded-md hover:bg-red-500 cursor-pointer">Close</button>
+        </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
